@@ -1,0 +1,59 @@
+.App-main {
+  overflow-x: hidden;
+}
+.Projects {
+  &-grid { 
+    list-style: none;
+    display: grid;
+    margin: 0 -60px;
+    padding: 0;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-gap: 4px;
+    &-image {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    img {
+      display: block;
+      width: 100%;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    }
+    @media (min-width: 392px) { 
+      &-image:nth-child(3), // start with 3
+      &-image:nth-child(6), // +3
+      &-image:nth-child(9),
+      &-image:nth-child(12),
+      &-image:nth-child(15),
+      &-image:nth-child(18) {
+        grid-column: 2 / span 2;
+      }  
+    } 
+    @media (min-width: 404px) { 
+      &-image:nth-child(3), // undo above
+      &-image:nth-child(6), // +3
+      &-image:nth-child(9),
+      &-image:nth-child(12),
+      &-image:nth-child(15),
+      &-image:nth-child(18) {
+        grid-column: 2 / span 2;
+      } 
+      &-image:nth-child(3), // start with 3
+      &-image:nth-child(7), // +4
+      &-image:nth-child(11),
+      &-image:nth-child(15),
+      &-image:nth-child(19) {
+        grid-column: 2 / span 2;
+      }  
+    } 
+  
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
