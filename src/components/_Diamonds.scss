@@ -1,0 +1,56 @@
+
+
+:root {
+  --cols: 1;
+  --even-cols: 3;
+  --gap: 2vw;
+  --size: calc(100vw / var(--cols) - var (--gap));
+  --even-margin: calc( var(--size) / 2);
+}
+
+// @include respond-above(lg) {
+//   :root {
+//     --cols: 4;
+//     --gap: 2vw;
+//   }
+// } 
+// @include respond-above(xs) {
+//   :root {
+//     --cols: 4;
+//     --gap: 2vw;
+//   }
+// }
+
+.Diamonds {
+  &-grid { 
+    list-style: none;
+    display: grid;
+    font-family: $header-type;
+    // repeat(number of columns/rows, the column width we want);
+    grid-template-columns: repeat(var(--cols), 1fr);
+    grid-gap: var(--gap);
+    &-image {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    img {
+      display: block;
+      width: 100%;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    } 
+  }
+  &-diamond {
+    margin: 0;
+    @for $i from 1 through 20 {
+      @if ($i % 2 == 0 and $i % 4 != 0) {
+        &.numb-#{$i} {
+          margin: 0;
+          border: 1px solid red;
+        }
+      }
+      @include respond-above(xs) {
+        
+      }
+    }
+  }
+}
